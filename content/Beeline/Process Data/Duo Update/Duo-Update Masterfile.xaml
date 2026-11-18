@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Duo_Update_Masterfile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Duo_Update_Masterfile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_DiDuoMasterFile" Type="InOutArgument(mg:DriveItem)" />
     <x:Property Name="in_StrColSite" Type="InArgument(x:String)" />
@@ -9,6 +9,7 @@
     <x:Property Name="in_StrFirstName" Type="InArgument(x:String)" />
     <x:Property Name="in_StrLastName" Type="InArgument(x:String)" />
     <x:Property Name="io_StrDIDxExtn" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_DtValidData" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <this:Duo_Update_Masterfile.in_StrColSite>
     <InArgument x:TypeArguments="x:String" />
@@ -114,7 +115,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Duo_Update_Masterfile" sap:VirtualizedContainerService.HintSize="1350,1476" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Duo_Update_Masterfile" sap:VirtualizedContainerService.HintSize="1097,1559" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSheetName" />
       <Variable x:TypeArguments="x:String" Name="strMFSite" />
@@ -125,16 +126,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting Subprocess Duo-Update Masterfile&quot;]" />
-    <If Condition="[io_StrDIDxExtn.Equals(&quot;NA&quot;)]" sap:VirtualizedContainerService.HintSize="514,1112" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="547,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting Subprocess Duo-Update Masterfile&quot;]" />
+    <If Condition="[io_StrDIDxExtn.Equals(&quot;NA&quot;)]" sap:VirtualizedContainerService.HintSize="547,1199" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,742" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,799" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="478,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,84" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored activities" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
@@ -160,7 +161,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <If Condition="[out_StrDuoStatus.Equals(&quot;New&quot;)]" sap:VirtualizedContainerService.HintSize="478,625" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[out_StrDuoStatus.Equals(&quot;New&quot;)]" sap:VirtualizedContainerService.HintSize="450,655" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,13 +169,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,405" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,405" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Duo-Data-Check Available Extenstions - Invoke Workflow File (Beeline\Process Data\Duo Update\Duo-Data-Check Available Extenstions.xaml)" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Beeline\Process Data\Duo Update\Duo-Data-Check Available Extenstions.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Duo-Data-Check Available Extenstions - Invoke Workflow File (Beeline\Process Data\Duo Update\Duo-Data-Check Available Extenstions.xaml)" sap:VirtualizedContainerService.HintSize="382,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Beeline\Process Data\Duo Update\Duo-Data-Check Available Extenstions.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrColSite">[in_StrColSite]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument">[Nothing]</InArgument>
@@ -182,11 +183,12 @@
                     <OutArgument x:TypeArguments="x:String" x:Key="out_StrSheetName">[strSheetName]</OutArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrSheetMap">[in_StrSheetMap]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="out_StrMFSite">[strMFSite]</OutArgument>
+                    <InArgument x:TypeArguments="mg:DriveItem" x:Key="in_DiDuoMasterFile">[in_DiDuoMasterFile]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Duo-SP-Update Masterfile - Invoke Workflow File (Beeline\Process Data\Duo Update\Duo-SP-Update Masterfile.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Beeline\Process Data\Duo Update\Duo-SP-Update Masterfile.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Duo-SP-Update Masterfile - Invoke Workflow File (Beeline\Process Data\Duo Update\Duo-SP-Update Masterfile.xaml)" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Beeline\Process Data\Duo Update\Duo-SP-Update Masterfile.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument">[Nothing]</InArgument>
+                    <InArgument x:TypeArguments="mg:DriveItem" x:Key="in_DiDuoMasterFile">[in_DiDuoMasterFile]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrSheetName">[strSheetName]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrSite">[in_StrSite]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrEID">[in_StrEmployeeId]</InArgument>
@@ -194,12 +196,13 @@
                     <InArgument x:TypeArguments="x:String" x:Key="in_StrLastName">[in_StrLastName]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="out_StrPassword">[out_StrPassword]</OutArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="out_StrDIDxExtn">[io_StrDIDxExtn]</OutArgument>
+                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtValidData">[io_DtValidData]</InOutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -211,13 +214,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,231" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="513,230" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,171" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,170" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -242,6 +245,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Ending Subprocess Duo-Updte Masterfile&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="547,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Ending Subprocess Duo-Updte Masterfile&quot;]" />
   </Sequence>
 </Activity>
