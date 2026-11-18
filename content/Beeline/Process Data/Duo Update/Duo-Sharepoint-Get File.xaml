@@ -1,0 +1,293 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Duo_Sharepoint_Get_File" this:Duo_Sharepoint_Get_File.in_StrDriveName="Documents" this:Duo_Sharepoint_Get_File.in_StrSPSubfolder="Centene Duo Master File/Bot Test folder/Master File" this:Duo_Sharepoint_Get_File.in_StrMasterFileSPFN="CENTENE DUO PROJECT Master List.xlsx" this:Duo_Sharepoint_Get_File.in_StrSPUrl="https://theresultscompanies.sharepoint.com/teams/TechnicalImplementations-CenteneDuoMasterFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umaf="clr-namespace:UiPath.MicrosoftOffice365.Activities.Files;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umafe="clr-namespace:UiPath.MicrosoftOffice365.Activities.Files.Enums;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_StrDriveName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrSPSubfolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrMasterFileSPFN" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrSPUrl" Type="InArgument(x:String)" />
+    <x:Property Name="out_DiDuoMasterFile" Type="OutArgument(mg:DriveItem)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1202,2916</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Duo_Sharepoint_Get_File_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>Microsoft.Graph</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Duo_Sharepoint_Get_File" sap:VirtualizedContainerService.HintSize="638,2651" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Duo-Sharepoint-Get File" Name="strSequenceName" />
+      <Variable x:TypeArguments="mg:DriveItem" Name="diDuoMasterFile" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="576,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Starting Sequence &quot;+ strSequenceName]" />
+    <Sequence sap2010:Annotation.AnnotationText="Check In Args" DisplayName="Pre-Condition(Check In Args)" sap:VirtualizedContainerService.HintSize="576,605" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If sap2010:Annotation.AnnotationText="in_StrDriveName" Condition="[string.IsNullOrEmpty(in_StrDriveName)]" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[new Exception(&quot;In Argument   in_StrDriveName   is Null or empty &quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7" />
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="in_StrSPSubfolder" Condition="[string.IsNullOrEmpty(in_StrSPSubfolder)]" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="If_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[new Exception(&quot;In Argument  in_StrSPSubfolder    is Null or empty &quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9" />
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="in_StrMasterFileSPFN(File name as stored in sharepoint)" Condition="[string.IsNullOrEmpty(in_StrMasterFileSPFN)]" sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[new Exception(&quot;In Argument  in_StrMasterFileSPFN  is Null or empty &quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11" />
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="in_StrSPUrl" Condition="[string.IsNullOrEmpty(in_StrSPUrl)]" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="If_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[new Exception(&quot;In Argument  in_StrSPUrl   is Null or empty &quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_4" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="576,991" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="514,699" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="1" RetryInterval="00:00:10">
+        <ui:RetryScope.ActivityBody>
+          <ActivityAction>
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="472,524" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uma:Office365ApplicationScope ApplicationId="{x:Null}" ApplicationSecret="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" TenantId="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="srv-alt-robot-9@results-cx.com" AuthenticationType="InteractiveToken" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope" EmailAddress="srv-alt-robot-9@results-cx.com" Environment="Global" sap:VirtualizedContainerService.HintSize="410,413" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" UseConnectionService="False">
+                <uma:Office365ApplicationScope.AuthenticationScopes>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                    <InArgument x:TypeArguments="x:String">Sites.ReadWrite.All</InArgument>
+                  </scg:List>
+                </uma:Office365ApplicationScope.AuthenticationScopes>
+                <uma:Office365ApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,173" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <umaf:FindFilesAndFolders ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Results="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files And Folders" DriveName="[in_StrDriveName]" First="[out_DiDuoMasterFile]" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="FindFilesAndFolders_1" Query="[in_StrMasterFileSPFN]" SiteUrl="[in_StrSPUrl]" Subfolder="[in_StrSPSubfolder]" />
+                    </Sequence>
+                  </ActivityAction>
+                </uma:Office365ApplicationScope.Body>
+                <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                  <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+              </uma:Office365ApplicationScope>
+            </Sequence>
+          </ActivityAction>
+        </ui:RetryScope.ActivityBody>
+        <ui:RetryScope.Condition>
+          <ActivityFunc x:TypeArguments="x:Boolean" />
+        </ui:RetryScope.Condition>
+      </ui:RetryScope>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Duo Master File Drive Item extracted&quot;]" />
+    </Sequence>
+    <Sequence DisplayName="Post-Condition" sap:VirtualizedContainerService.HintSize="576,502" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If sap2010:Annotation.AnnotationText="out_DiDuoMasterFile" Condition="[out_DiDuoMasterFile is Nothing]" sap:VirtualizedContainerService.HintSize="410,391" sap2010:WorkflowViewState.IdRef="If_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw Exception="[New Exception(&quot; Out Argument out_DiDuoMasterFileis null&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_5" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Ending Sequence &quot;+ strSequenceName]" />
+  </Sequence>
+</Activity>

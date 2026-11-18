@@ -1,0 +1,24 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "b26ff55a-e907-4058-9317-af5a33fe45b9",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_OrchestratorQueueName": {
+            "type": "string",
+            "description": "Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file."
+          },
+          "in_OrchestratorQueueFolder": {
+            "type": "string",
+            "description": "Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file."
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "Name": "RehireRoleChange_Dispacher",
+  "ProjectType": "Process",
+  "Description": "Process to load Role Change and Rehire data to Queue",
+  "MainFile": "Main.xaml"
+}
